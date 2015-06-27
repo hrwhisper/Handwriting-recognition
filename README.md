@@ -1,5 +1,5 @@
 ## dataset ##
-you can download handwriting dataset from http://gorillamatrix.com/files/nist-sd19.rar
+Using NIST SD19 Dataset, you can download handwriting dataset from http://gorillamatrix.com/files/nist-sd19.rar
 
 ## run ##
 - 写一个单词并保存
