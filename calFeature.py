@@ -12,23 +12,25 @@ sameSize = 16
 
 
 def get_train_data(dataPath):
-    files = os.walk(dataPath).next()[2]
     train_input, desired_output = [], []
-    for i, file in enumerate(files):
-        outCharacter = file.split('_')[-2]
-        suffix = file.split('.')[-1]
-        if outCharacter.isdigit() or suffix != 'bmp': continue
-        testImg = to_the_same_size(read_image(dataPath + '\\' + file))
-        train_input.append(testImg.ravel())
-        desired_output.append(outCharacter)
-        print i, file
-        '''
-        test = to_the_same_size(read_image(dataPath+'\\'+file))
-        ax = plt.subplot(5,2,i+1)
-        ax.set_axis_off() 
-        ax.imshow(test)
-        train_input.append(test)
-        '''
+    i = 0
+    for root, dirs, files in os.walk(dataPath):
+        for _file in files:
+            outCharacter = _file.split('_')[-2]
+            suffix = _file.split('.')[-1]
+            if outCharacter.isdigit() or suffix != 'bmp': continue
+            test_img = to_the_same_size(read_image(dataPath + '\\' + _file))
+            train_input.append(test_img.ravel())
+            desired_output.append(outCharacter)
+            print i, _file
+            i += 1
+            '''
+            test = to_the_same_size(read_image(dataPath+'\\'+file))
+            ax = plt.subplot(5,2,i+1)
+            ax.set_axis_off()
+            ax.imshow(test)
+            train_input.append(test)
+            '''
     return train_input, desired_output
 
 
